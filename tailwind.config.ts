@@ -11,9 +11,13 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        primary: "var(--primary-color)",
+        "primary-hover": "var(--primary-color-hover)",
+        "french-gray": "var(--french-gray)",
+        "cool-gray": "var(--cool-gray)",
       },
       fontFamily: {
-        ["proxima-nova"]: "var(--font-proxima-nova)",
+        "proxima-nova": "var(--font-proxima-nova)",
       },
     },
   },
