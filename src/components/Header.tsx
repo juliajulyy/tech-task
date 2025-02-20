@@ -10,7 +10,7 @@ export const Header: FC = () => (
         <Link href="/" className="cursor-pointer">
           <span className="text-2xl">Cozy®</span>
         </Link>
-        <ul className="flex gap-10">
+        <ul className="flex gap-10 text-label-small font-semibold">
           {navigationItems.map((item) => (
             <li
               key={item.id}

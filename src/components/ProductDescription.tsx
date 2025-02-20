@@ -68,7 +68,7 @@ export const ProductDescription: FC<Props> = ({ product }) => {
   return (
     <div className="max-w-[440px] w-1/3 ml-[80px]">
       <ArrowBack className="hover:text-primary cursor-pointer transition-colors" />
-      <ul className="flex mt-[34px]">
+      <ul className="flex mt-[34px] text-label-small font-semibold">
         <li>
           <Link
             className="hover:underline text-cool-gray hover:text-primary"
@@ -79,33 +79,37 @@ export const ProductDescription: FC<Props> = ({ product }) => {
         </li>
         <span className="mx-2">/</span>
         <li>
-          <span className="text-gray-900 font-medium">{product.name}</span>
+          <span className="text-foreground ">{product.name}</span>
         </li>
       </ul>
 
-      <h1 className="text-3xl font-bold mt-[76px]">{product.name}</h1>
-      <div className="flex justify-between mt-[24px] items-center">
-        <p className="text-2xl font-semibold text-gray-800">${product.price}</p>
+      <h1 className="text-headline-large font-bold mt-[76px]">
+        {product.name}
+      </h1>
+      <div className="flex justify-between mt-[24px] items-center text-body-large">
+        <p className="text-title-medium font-semibold text-gray-800">
+          ${product.price}
+        </p>
         <RatingStars
           className="flex items-center"
           rating={product.rating}
           reviews={product.review_count}
         />
       </div>
-      <p className="mt-[48px]">{product.description}</p>
+      <p className="mt-[48px] text-body-large">{product.description}</p>
       <ColorPicker colors={colorOptions} />
 
       <div className="mt-8 flex items-center">
         <ProductCounter />
         <PrimaryButton className="ml-6">Add to Cart</PrimaryButton>
       </div>
-      <p className="mt-8">
+      <p className="mt-8 text-body-large">
         Free 3-5 day shipping • Tool-free assembly • 30-day trial
       </p>
       <div className="flex mt-20 items-center justify-between">
         <button
           onClick={handleWishlist}
-          className="flex hover:underline items-center text-primary font-semibold"
+          className="flex hover:underline items-center text-primary text-label-medium font-semibold"
         >
           {isWishlisted ? (
             <>

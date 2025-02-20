@@ -24,10 +24,10 @@ export const ProductSlider: FC<Props> = ({ images }) => {
     <div className="flex flex-col flex-1 items-end">
       <div className="flex flex-col gap-4 mr-10">
         <div className="pl-2">
-          <span className="font-bold text-3xl">
+          <span className="font-bold text-headline-medium">
             {formatNumber(currentIndex + 1)}
           </span>{" "}
-          <span className="font-semibold text-2xl text-cool-gray">
+          <span className="font-semibold text-title-medium text-cool-gray">
             {"/"} {formatNumber(images.length)}
           </span>
         </div>
