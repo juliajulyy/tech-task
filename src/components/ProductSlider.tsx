@@ -7,14 +7,7 @@ type Props = {
   images: string[];
 };
 
-const customImages = [
-  "https://i.imgur.com/pQCroZE.png",
-  "https://imgur.com/IWOhL09.png",
-  "https://imgur.com/pRkJF1H.png",
-  "https://imgur.com/ae3rgB8.png",
-];
-
-export const ProductSlider: FC<Props> = ({ images = customImages }) => {
+export const ProductSlider: FC<Props> = ({ images }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const prevSlide = () => {

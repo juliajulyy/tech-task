@@ -1,46 +1,99 @@
+"use client";
+
 import {
   IconBrandFacebookFilled,
   IconBrandInstagram,
   IconBrandPinterestFilled,
   IconBrandTwitterFilled,
   IconHeart,
+  IconHeartFilled,
 } from "@tabler/icons-react";
 import { ArrowBack } from "./ArrowBack";
 import { ColorPicker } from "./ColorPicker";
 import { PrimaryButton } from "./PrimaryButton";
 import { ProductCounter } from "./ProductCounter";
 import RatingStars from "./Stars";
+import { FC, useEffect, useState } from "react";
+import Link from "next/link";
+import { Product } from "@/types";
+import { ProductService } from "@/services/product.service";
 
-export const ProductDescription = () => {
+const variationTitles = {
+  colorOptions: "color",
+};
+
+type Props = {
+  product: Pick<
+    Product,
+    | "name"
+    | "category"
+    | "variations"
+    | "description"
+    | "price"
+    | "rating"
+    | "review_count"
+    | "id"
+  >;
+};
+
+const productService = new ProductService();
+
+export const ProductDescription: FC<Props> = ({ product }) => {
+  const [wishlistId, setWishlistId] = useState<string | undefined>();
+
+  useEffect(() => {
+    productService.getWishlistId(product.id).then((wishlistId) => {
+      setWishlistId(wishlistId);
+    });
+  }, [product.id]);
+
+  const isWishlisted = Boolean(wishlistId);
+
+  const handleWishlist = async () => {
+    if (wishlistId) {
+      productService.removeFromWishlist(wishlistId);
+      setWishlistId(undefined);
+    } else {
+      const wishlistId = await productService.addToWishlist(
+        parseInt(product.id, 10)
+      );
+      setWishlistId(wishlistId);
+    }
+  };
+
+  const colorOptions = product.variations
+    .filter((variant) => variant.title === variationTitles.colorOptions)
+    .flatMap((item) => item.options);
+
   return (
     <div className="max-w-[440px] w-1/3 ml-[80px]">
       <ArrowBack className="hover:text-primary cursor-pointer transition-colors" />
       <ul className="flex mt-[34px]">
         <li>
-          <a
+          <Link
             className="hover:underline text-cool-gray hover:text-primary"
-            href="/chair"
+            href={`/${product.category}`}
           >
-            Chair
-          </a>
+            {product.category}
+          </Link>
         </li>
         <span className="mx-2">/</span>
         <li>
-          <span className="text-gray-900 font-medium">Meryl Lounge Chair</span>
+          <span className="text-gray-900 font-medium">{product.name}</span>
         </li>
       </ul>
 
-      <h1 className="text-3xl font-bold mt-[76px]">Meryl Lounge Chair</h1>
+      <h1 className="text-3xl font-bold mt-[76px]">{product.name}</h1>
       <div className="flex justify-between mt-[24px] items-center">
-        <p className="text-2xl font-semibold text-gray-800">$149.99</p>
-        <RatingStars className="flex items-center" rating={4.5} reviews={556} />
+        <p className="text-2xl font-semibold text-gray-800">${product.price}</p>
+        <RatingStars
+          className="flex items-center"
+          rating={product.rating}
+          reviews={product.review_count}
+        />
       </div>
-      <p className="mt-[48px]">
-        The gently curved lines accentuated by sewn details are kind to your
-        body and pleasant to look at. Also, there’s a tilt and height-adjusting
-        mechanism that’s built to outlast years of ups and downs.
-      </p>
-      <ColorPicker colors={["#C1BDB3", "#58737D", "#545454", "#CBA5A5"]} />
+      <p className="mt-[48px]">{product.description}</p>
+      <ColorPicker colors={colorOptions} />
 
       <div className="mt-8 flex items-center">
         <ProductCounter />
@@ -50,23 +103,35 @@ export const ProductDescription = () => {
         Free 3-5 day shipping • Tool-free assembly • 30-day trial
       </p>
       <div className="flex mt-20 items-center justify-between">
-        <button className="flex hover:underline items-center text-primary font-semibold">
-          <IconHeart className="text-primary" />{" "}
-          <span className="ml-4">Add to Wishlist</span>
+        <button
+          onClick={handleWishlist}
+          className="flex hover:underline items-center text-primary font-semibold"
+        >
+          {isWishlisted ? (
+            <>
+              <IconHeartFilled className="text-primary" />{" "}
+              <span className="ml-4">Remove from Wishlist</span>
+            </>
+          ) : (
+            <>
+              <IconHeart className="text-primary" />{" "}
+              <span className="ml-4">Add to Wishlist</span>
+            </>
+          )}
         </button>
         <div className="flex space-x-4">
-          <a href="#">
+          <Link href="#">
             <IconBrandFacebookFilled className="w-4 h-4" />
-          </a>
-          <a href="#">
+          </Link>
+          <Link href="#">
             <IconBrandTwitterFilled className="w-4 h-4" />
-          </a>
-          <a href="#">
+          </Link>
+          <Link href="#">
             <IconBrandPinterestFilled className="w-4 h-4" />
-          </a>
-          <a href="#">
+          </Link>
+          <Link href="#">
             <IconBrandInstagram className="w-4 h-4" />
-          </a>
+          </Link>
         </div>
       </div>
     </div>
