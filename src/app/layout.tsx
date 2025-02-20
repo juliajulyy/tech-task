@@ -27,7 +27,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${proximaNova.variable} font-proxima-nova`}>
         <Header />
-        <main className="mx-auto">{children}</main>
+        <main className="mx-auto pb-[56px]">{children}</main>
       </body>
     </html>
   );

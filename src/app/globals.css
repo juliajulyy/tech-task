@@ -6,9 +6,9 @@
   --background: #ffffff;
   --foreground: #17183b;
   --primary-color: #3aa39f;
-  --french-gray: #a2a3b1;
+  --french-gray: #d1d8d1;
   --cool-gray: #a2a3b1;
-  --primary-color-hover: #3aa39fde;
+  --primary-active-color: #3aa39f;
 }
 
 body {

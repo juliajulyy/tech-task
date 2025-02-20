@@ -12,7 +12,7 @@ export default {
         background: "var(--background)",
         foreground: "var(--foreground)",
         primary: "var(--primary-color)",
-        "primary-hover": "var(--primary-color-hover)",
+        "primary-active": "var(--primary-active-color)",
         "french-gray": "var(--french-gray)",
         "cool-gray": "var(--cool-gray)",
       },
