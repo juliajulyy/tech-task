@@ -14,7 +14,7 @@ export default async function ProductItem({
   const product = await productService.getProducts(productId);
 
   return (
-    <div className="pt-[54px] flex justify-between">
+    <div className="flex justify-between">
       <ProductDescription product={product} />
       <ProductSlider images={product.images} />
     </div>

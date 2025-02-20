@@ -32,10 +32,16 @@ export const ProductSlider: FC<Props> = ({ images }) => {
           </span>
         </div>
         <div className="flex justify-self-end justify-between w-[128px]">
-          <button onClick={prevSlide} className="hover:text-primary-active">
+          <button
+            onClick={prevSlide}
+            className="transition-colors hover:text-primary-active"
+          >
             <IconChevronLeft />
           </button>
-          <button onClick={nextSlide} className="hover:text-primary-active">
+          <button
+            onClick={nextSlide}
+            className="transition-colors hover:text-primary-active"
+          >
             <IconChevronRight />
           </button>
         </div>
@@ -72,7 +78,7 @@ export const ProductSlider: FC<Props> = ({ images }) => {
             <button
               key={index}
               onClick={() => setCurrentIndex(index)}
-              className={`relative flex justify-center items-center border-2 rounded-md overflow-hidden w-[104px] h-[104px] ${
+              className={`relative flex justify-center items-center border-2 rounded-md overflow-hidden w-[104px] h-[104px] transition-all duration-300 hover:scale-110 ${
                 index === currentIndex
                   ? "border-primary-active"
                   : "border-french-gray"

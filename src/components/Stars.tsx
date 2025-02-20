@@ -47,7 +47,7 @@ const RatingStars: FC<RatingProps> = ({
       <span className="ml-3">
         {rating.toFixed(1)} / {max}.0
       </span>
-      <span className="ml-1 text-french-gray">({reviews})</span>
+      <span className="ml-1 text-cool-gray">({reviews})</span>
     </div>
   );
 };

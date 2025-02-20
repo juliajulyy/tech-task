@@ -6,15 +6,17 @@ import { IconMenu4, IconSearch, IconShoppingCart } from "@tabler/icons-react";
 export const Header: FC = () => (
   <header className="border-b border-french-gray">
     <div className="flex min-h-[81px] h-full max-w-[1440px] w-full mx-auto">
-      <nav className="flex flex-1 justify-between items-center text-sm font-semibold px-10">
+      <nav className="flex flex-1 justify-between items-center px-10">
         <Link href="/" className="cursor-pointer">
-          <span className="text-2xl">Cozy®</span>
+          <span className="text-2xl font-semibold transition-colors hover:text-primary">
+            Cozy®
+          </span>
         </Link>
         <ul className="flex gap-10 text-label-small font-semibold">
           {navigationItems.map((item) => (
             <li
               key={item.id}
-              className="cursor-pointer hover:text-primary transition-colors uppercase"
+              className="cursor-pointer hover:text-primary transition-all uppercase transform duration-300 hover:scale-105"
             >
               <Link href={item.href}>{item.label}</Link>
             </li>

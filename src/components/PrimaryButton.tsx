@@ -10,7 +10,7 @@ export const PrimaryButton: FC<Props> = ({ children, onClick, className }) => {
   return (
     <button
       onClick={onClick}
-      className={`px-10 h-[56px] py-4 bg-primary text-white text-label-medium rounded-[4px] hover:bg-primary-active transition-colors font-semibold ${className}`}
+      className={`px-10 h-[56px] py-4 bg-primary text-white text-label-medium rounded-[4px] hover:bg-primary-active transition-all transform duration-300 font-semibold hover:scale-105 ${className}`}
     >
       {children}
     </button>

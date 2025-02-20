@@ -71,7 +71,7 @@ export const ProductDescription: FC<Props> = ({ product }) => {
       <ul className="flex mt-[34px] text-label-small font-semibold">
         <li>
           <Link
-            className="hover:underline text-cool-gray hover:text-primary"
+            className="hover:underline text-cool-gray transition-colors hover:text-primary"
             href={`/${product.category}`}
           >
             {product.category}
@@ -87,9 +87,7 @@ export const ProductDescription: FC<Props> = ({ product }) => {
         {product.name}
       </h1>
       <div className="flex justify-between mt-[24px] items-center text-body-large">
-        <p className="text-title-medium font-semibold text-gray-800">
-          ${product.price}
-        </p>
+        <p className="text-title-medium font-semibold">${product.price}</p>
         <RatingStars
           className="flex items-center"
           rating={product.rating}

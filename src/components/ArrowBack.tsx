@@ -1,6 +1,10 @@
 // Exact same icon isn't availiable in tabler icons library
 
-export const ArrowBack = ({ className = "" }) => {
+import { FC } from "react";
+
+type Props = { className: string };
+
+export const ArrowBack: FC<Props> = ({ className = "" }) => {
   return (
     <svg
       width="24"
